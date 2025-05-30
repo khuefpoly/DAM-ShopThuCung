@@ -21,3 +21,6 @@ function connectDB() {
         echo ("Connection failed: " . $e->getMessage());
     }
 }
+//thêm file
+//xóa file
+//debug

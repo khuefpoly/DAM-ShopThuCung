@@ -10,3 +10,5 @@
 
 
 - Cấu hình DB trong file commons/env.php
+
+<!-- Base này không dùng bất cứ 1 đường dẫn chính xác nào -->
