@@ -50,15 +50,13 @@
                 <tbody>
                   <?php foreach ($listSanPham as $key => $sanPham) : ?>
                     <tr>
-                      <td><?php echo $key + 1; ?></td>
-                      <td><img src="<?php BASE_URL . $sanPham['hinh_anh']; ?>" style="100px" alt=""
-                      onerror="this.onerror=null;this.src='https://azpet.com.vn/wp-content/uploads/2025/06/corgi-trang-vang-duc-3-2.jpg';" class="img-fluid" width="100" height="100"
-                      ></td>
-                      <td><?php echo $sanPham['ten_san_pham']; ?></td>
-                      <td><?php echo $sanPham['gia_san_pham']; ?></td>
-                      <td><?php echo $sanPham['so_luong']; ?></td>
-                      <td><?php echo $sanPham['ten_danh_muc']; ?></td>
-                      <td><?php echo $sanPham['trang_thai']== 1 ? "Còn bán" : "Dừng bán"; ?></td>
+                      <td><?= $key + 1; ?></td>
+                      <td><img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="width: 100px; height: 100px;" alt=""></td>
+                      <td><?= $sanPham['ten_san_pham']; ?></td>
+                      <td><?= $sanPham['gia_san_pham']; ?></td>
+                      <td><?= $sanPham['so_luong']; ?></td>
+                      <td><?= $sanPham['ten_danh_muc']; ?></td>
+                      <td><?= $sanPham['trang_thai'] == 1 ? "Còn bán" : "Dừng bán"; ?></td>
                       <td>
                         <a href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sanPham['id'] ?>">
                           <button class="btn btn-warning">Sửa</button>
