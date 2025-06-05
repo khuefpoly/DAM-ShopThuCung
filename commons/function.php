@@ -43,4 +43,15 @@ function deleteFile($file)
         unlink($pathDelete);
     }
 }
+
+// Xóa session sau khi load trang
+function deleteSessionError()
+{
+    if (isset($_SESSION['flash'])) {
+        // Hủy session sau khi đã tải trang
+        unset($_SESSION['flash']);
+        session_unset();
+        session_destroy();
+    }
+}
 //debug

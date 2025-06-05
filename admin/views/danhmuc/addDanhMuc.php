@@ -32,13 +32,13 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="<?= BASE_URL_ADMIN .'?act=them-danh-muc' ?>" method="POST">
+            <form action="<?= BASE_URL_ADMIN . '?act=them-danh-muc' ?>" method="POST">
               <div class="card-body">
                 <div class="form-group">
                   <label>Tên danh mục</label>
                   <input type="text" class="form-control" name="ten_danh_muc" placeholder="Nhập tên danh mục">
-                  <?php if (isset($errors['ten_danh_muc'])) { ?>
-                    <span class="text-danger"><?= $errors['ten_danh_muc'] ?></span>
+                  <?php if (isset($_SESSION['error']['ten_danh_muc'])) { ?>
+                    <span class="text-danger"><?= $_SESSION['error']['ten_danh_muc'] ?></span>
                   <?php } ?>
                 </div>
                 <div class="form-group">

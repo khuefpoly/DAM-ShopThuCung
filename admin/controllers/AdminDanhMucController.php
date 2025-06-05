@@ -16,6 +16,8 @@ class AdminDanhMucController
   {
     // Hiển thị form nhập
     require_once './views/danhmuc/addDanhMuc.php';
+    // Xóa session sau khi load trang
+    deleteSessionError();
   }
   public function postAddDanhMuc()
   {
@@ -24,14 +26,16 @@ class AdminDanhMucController
     //Kiểm tra xem dữ liệu có phải được submit lên không
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // Lấy dữ liệu từ form
-      $ten_danh_muc = $_POST['ten_danh_muc'];
-      $mo_ta = $_POST['mo_ta'];
+      $ten_danh_muc = $_POST['ten_danh_muc'] ?? '';
+      $mo_ta = $_POST['mo_ta'] ?? '';
 
       //Tạo 1 mảng trống để chứa dữ liệu
       $errors = [];
       if (empty($ten_danh_muc)) {
         $errors['ten_danh_muc'] = "Tên danh mục không được để trống";
       }
+
+      $_SESSION['error'] = $errors;
 
       //Nếu không có lỗi thì tiến hành thêm danh mục
       if (empty($errors)) {
@@ -42,7 +46,9 @@ class AdminDanhMucController
         exit();
       } else {
         //Trả về form và lỗi
-        require_once './views/danhmuc/addDanhMuc.php';
+        $_SESSION['flash'] = true;
+        header('Location: ' . BASE_URL_ADMIN . '?act=form-them-danh-muc');
+        exit();
       }
     }
   }
