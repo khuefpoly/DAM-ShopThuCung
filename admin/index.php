@@ -25,9 +25,9 @@ match ($act) {
 
    // router sản phẩm
    'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
-   'form-them-san-pham' => (new AdminSanPhamController())->formAddSanPham(),
-   'them-san-pham' => (new AdminSanPhamController())->postAddSanPham(),
-   'form-sua-san-pham' => (new AdminSanPhamController())->formEditSanPham(),
-   'sua-san-pham' => (new AdminSanPhamController())->postEditSanPham(),
-   'xoa-san-pham' => (new AdminSanPhamController())->deleteSanPham(),
+   // 'form-them-san-pham' => (new AdminSanPhamController())->formAddSanPham(),
+   // 'them-san-pham' => (new AdminSanPhamController())->postAddSanPham(),
+   // 'form-sua-san-pham' => (new AdminSanPhamController())->formEditSanPham(),
+   // 'sua-san-pham' => (new AdminSanPhamController())->postEditSanPham(),
+   // 'xoa-san-pham' => (new AdminSanPhamController())->deleteSanPham(),
 };
