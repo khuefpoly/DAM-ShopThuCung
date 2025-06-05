@@ -5,7 +5,7 @@
 
 define('BASE_URL'       , 'http://localhost/DAM/DAM-Shopthucung/');
 //đường dẫn vào phần admin
-define('BASE_URL_ADMIN'       , 'http://localhost/DAM/DAM-Shopthucung/admin');
+define('BASE_URL_ADMIN'       , 'http://localhost/DAM/DAM-Shopthucung/admin/');
 
 define('DB_HOST'    , 'localhost');
 define('DB_PORT'    , 3306);
