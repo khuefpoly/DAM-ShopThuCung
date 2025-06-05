@@ -1,12 +1,12 @@
 <!-- header -->
-<?php include './views/layout/header.php';?>
+<?php include './views/layout/header.php'; ?>
 <!-- End header -->
 <!-- Navbar -->
-<?php include './views/layout/navbar.php';?>
+<?php include './views/layout/navbar.php'; ?>
 <!-- /.navbar -->
 
 <!-- Main Sidebar Container -->
-<?php include './views/layout/sidebar.php';?>
+<?php include './views/layout/sidebar.php'; ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -28,7 +28,9 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">DataTable with default features</h3>
+              <a href="<?= BASE_URL_ADMIN . '?act=form-them-danh-muc' ?>">
+                <button class="btn btn-success">Thêm danh mục</button>
+              </a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -43,15 +45,19 @@
                 </thead>
                 <tbody>
                   <?php foreach ($listDanhMuc as $key => $danhMuc) : ?>
-                  <tr>
-                    <td><?php echo $key + 1; ?></td>
-                    <td><?php echo $danhMuc['ten_danh_muc']; ?></td>
-                    <td><?php echo $danhMuc['mo_ta']; ?></td>
-                    <td>
-                      <button class="btn btn-warning">Sửa</button>
-                      <button class="btn btn-danger">Xóa</button>
-                    </td>
-                  </tr>
+                    <tr>
+                      <td><?php echo $key + 1; ?></td>
+                      <td><?php echo $danhMuc['ten_danh_muc']; ?></td>
+                      <td><?php echo $danhMuc['mo_ta']; ?></td>
+                      <td>
+                        <a href="<?= BASE_URL_ADMIN . '?act=form-sua-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>">
+                          <button class="btn btn-warning">Sửa</button>
+                        </a>
+                        <a href="<?= BASE_URL_ADMIN . '?act=xoa-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không?')">
+                          <button class="btn btn-danger">Xóa</button>
+                        </a>
+                      </td>
+                    </tr>
                   <?php endforeach; ?>
                 </tbody>
                 <tfoot>
@@ -78,27 +84,27 @@
 </div>
 <!-- /.content-wrapper -->
 <!-- Footer -->
-<?php include './views/layout/footer.php';?>
+<?php include './views/layout/footer.php'; ?>
 <!-- End Footer-->
 <!-- Page specific script -->
 <script>
-$(function() {
-  $(" #example1").DataTable({
-    "responsive": true,
-    "lengthChange": false,
-    "autoWidth": false,
-    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-  }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-  $('#example2').DataTable({
-    "paging": true,
-    "lengthChange": false,
-    "searching": false,
-    "ordering": true,
-    "info": true,
-    "autoWidth": false,
-    "responsive": true,
+  $(function() {
+    $(" #example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
   });
-});
 </script>
 </body>
 
