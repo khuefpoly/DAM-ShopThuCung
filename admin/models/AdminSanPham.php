@@ -126,4 +126,47 @@ class AdminSanPham
       echo "Lỗi" . $e->getMessage();
     }
   }
+  public function getDetailAnhSanPham($id)
+  {
+    try {
+      $sql = "SELECT * FROM hinh_anh_san_phams WHERE id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([':id' => $id]);
+      return $stmt->fetch();
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
+  public function updateAnhSanPham($id, $new_file)
+  {
+    try {
+      $sql = "UPDATE hinh_anh_san_phams SET 
+        link_hinh_anh = :new_file
+      WHERE id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([
+        ':link_hinh_anh' => $new_file,
+        ':id' => $id,
+      ]);
+      return true;
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
+   public function destroyAnhSanPham($id)
+  {
+    try {
+      $sql = "DELETE FROM hinh_anh_san_phams WHERE id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([
+        ':id' => $id,
+      ]);
+
+      return true;
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
+
+  
 }
