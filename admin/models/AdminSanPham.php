@@ -20,7 +20,7 @@ class AdminSanPham
       echo "Lỗi" . $e->getMessage();
     }
   }
-  // thêm danh mục sản phẩm
+  // thêm  sản phẩm
   public function insertSanPham($ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $hinh_anh)
   {
     try {
@@ -53,6 +53,73 @@ class AdminSanPham
       $stmt->execute([
         ':san_pham_id' => $san_pham_id,
         ':link_hinh_anh' => $link_hinh_anh,
+      ]);
+      return true;
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
+
+  public function getDetailSanPham($id)
+  {
+    try {
+      $sql = "SELECT * FROM san_phams WHERE id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([':id' => $id]);
+      return $stmt->fetch();
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
+  public function getListAnhSanPham($id)
+  {
+    try {
+      $sql = "SELECT * FROM hinh_anh_san_phams WHERE san_pham_id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([':id' => $id]);
+      return $stmt->fetchAll();
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
+  public function postEditSanPham($id)
+  {
+    try {
+      $sql = "SELECT * FROM san_phams WHERE id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([':id' => $id]);
+      return $stmt->fetch();
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
+  // sửa sản phẩm
+  public function updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $hinh_anh)
+  {
+    try {
+      $sql = "UPDATE san_phams SET 
+        ten_san_pham = :ten_san_pham, 
+        gia_san_pham = :gia_san_pham, 
+        gia_khuyen_mai = :gia_khuyen_mai, 
+        so_luong = :so_luong, 
+        ngay_nhap = :ngay_nhap, 
+        danh_muc_id = :danh_muc_id, 
+        trang_thai = :trang_thai, 
+        mo_ta = :mo_ta, 
+        hinh_anh = :hinh_anh
+      WHERE id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([
+        ':ten_san_pham' => $ten_san_pham,
+        ':gia_san_pham' => $gia_san_pham,
+        ':gia_khuyen_mai' => $gia_khuyen_mai,
+        ':so_luong' => $so_luong,
+        ':ngay_nhap' => $ngay_nhap,
+        ':danh_muc_id' => $danh_muc_id,
+        ':trang_thai' => $trang_thai,
+        ':mo_ta' => $mo_ta,
+        ':hinh_anh' => $hinh_anh,
+        ':id' => $san_pham_id,
       ]);
       return true;
     } catch (Exception $e) {
