@@ -315,4 +315,19 @@ class AdminSanPhamController
     header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
     exit();
   }
+    public function detailSanPham()
+  {
+    $id = $_GET['id_san_pham'];
+
+    $sanPham = $this->modelSanPham->getDetailSanPham($id);
+
+    $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
+
+    if ($sanPham) {
+      require_once './views/sanPham/detailSanPham.php';
+    } else {
+      header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
+      exit();
+    }
+  }
 }
