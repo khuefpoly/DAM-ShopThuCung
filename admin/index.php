@@ -31,5 +31,5 @@ match ($act) {
    'form-sua-san-pham' => (new AdminSanPhamController())->formEditSanPham(),
    'sua-san-pham' => (new AdminSanPhamController())->postEditSanPham(),
    'sua-album-anh-san-pham' => (new AdminSanPhamController())->postEditAnhSanPham(),
-   // 'xoa-san-pham' => (new AdminSanPhamController())->deleteSanPham(),
+   'xoa-san-pham' => (new AdminSanPhamController())->deleteSanPham(),
 };

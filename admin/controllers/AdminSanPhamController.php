@@ -293,16 +293,26 @@ class AdminSanPhamController
 
 
 
-  // public function deleteDanhMuc()
-  // {
-  //   // Hàm này xử lý xóa dữ liệu
-  //   //Lấy ra thông tin của danh mục cần sửa
-  //   $id = $_GET['id_danh_muc'];
-  //   $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
-  //   if ($danhMuc) {
-  //     $this->modelDanhMuc->destroyDanhMuc($id);
-  //   }
-  //   header('Location: ' . BASE_URL_ADMIN . '?act=danh-muc');
-  //   exit();
-  // }
+  public function deleteSanPham()
+  {
+    // Hàm này xử lý xóa dữ liệu
+    //Lấy ra thông tin của danh mục cần sửa
+    $id = $_GET['id_san_pham'];
+    $sanPham = $this->modelSanPham->getDetailSanPham($id);
+
+    $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
+
+    if ($sanPham) {
+      deleteFile($sanPham['hinh_anh']);
+      $this->modelSanPham->destroySanPham($id);
+    }
+    if ($listAnhSanPham) {
+      foreach ($listAnhSanPham as $key => $anhSP) {
+        deleteFile($anhSP['link_hinh_anh']);
+        $this->modelSanPham->destroyAnhSanPham($anhSP['id']);
+      }
+    }
+    header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
+    exit();
+  }
 }

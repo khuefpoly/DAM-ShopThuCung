@@ -167,6 +167,20 @@ class AdminSanPham
       echo "Lỗi" . $e->getMessage();
     }
   }
+   public function destroySanPham($id)
+  {
+    try {
+      $sql = "DELETE FROM san_phams WHERE id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([
+        ':id' => $id,
+      ]);
+
+      return true;
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
 
   
 }

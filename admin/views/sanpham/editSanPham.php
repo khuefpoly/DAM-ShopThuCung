@@ -14,8 +14,11 @@
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-6">
+        <div class="col-sm-11">
           <h1>Sửa thông tin sản phẩm <?= $sanPham['ten_san_pham'] ?></h1>
+        </div>
+        <div class="col-sm-1 ">
+          <a href="<?= BASE_URL_ADMIN . '?act=san-pham' ?>" class="btn btn-secondary">Quay lại</a>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -139,13 +142,6 @@
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-12">
-        <a href="<?= BASE_URL_ADMIN . '?act=san-pham' ?>" class="btn btn-secondary">Cancel</a>
-        <input type="submit" value="Save Changes" class="btn btn-success float-right">
-      </div>
-    </div>
   </section>
   <!-- /.content -->
 </div>
@@ -172,7 +168,7 @@
 
   function removeRow(rowId, imgId) {
     $('#faqs-row-' + rowId).remove();
-    
+
     if (imgId !== null) {
       // Nếu có imgId thì thêm vào mảng xóa
       var imgDeleteInput = document.getElementById('img_delete');
