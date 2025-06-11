@@ -73,92 +73,40 @@ class AdminDonHang
   //     echo "Lỗi" . $e->getMessage();
   //   }
   // }
-  // // sửa sản phẩm
-  // public function updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $hinh_anh)
-  // {
-  //   try {
-  //     $sql = "UPDATE san_phams SET 
-  //       ten_san_pham = :ten_san_pham, 
-  //       gia_san_pham = :gia_san_pham, 
-  //       gia_khuyen_mai = :gia_khuyen_mai, 
-  //       so_luong = :so_luong, 
-  //       ngay_nhap = :ngay_nhap, 
-  //       danh_muc_id = :danh_muc_id, 
-  //       trang_thai = :trang_thai, 
-  //       mo_ta = :mo_ta, 
-  //       hinh_anh = :hinh_anh
-  //     WHERE id = :id";
-  //     $stmt = $this->conn->prepare($sql);
-  //     $stmt->execute([
-  //       ':ten_san_pham' => $ten_san_pham,
-  //       ':gia_san_pham' => $gia_san_pham,
-  //       ':gia_khuyen_mai' => $gia_khuyen_mai,
-  //       ':so_luong' => $so_luong,
-  //       ':ngay_nhap' => $ngay_nhap,
-  //       ':danh_muc_id' => $danh_muc_id,
-  //       ':trang_thai' => $trang_thai,
-  //       ':mo_ta' => $mo_ta,
-  //       ':hinh_anh' => $hinh_anh,
-  //       ':id' => $san_pham_id,
-  //     ]);
-  //     return true;
-  //   } catch (Exception $e) {
-  //     echo "Lỗi" . $e->getMessage();
-  //   }
-  // }
-  // public function getDetailAnhSanPham($id)
-  // {
-  //   try {
-  //     $sql = "SELECT * FROM hinh_anh_san_phams WHERE id = :id";
-  //     $stmt = $this->conn->prepare($sql);
-  //     $stmt->execute([':id' => $id]);
-  //     return $stmt->fetch();
-  //   } catch (Exception $e) {
-  //     echo "Lỗi" . $e->getMessage();
-  //   }
-  // }
-  // public function updateAnhSanPham($id, $new_file)
-  // {
-  //   try {
-  //     $sql = "UPDATE hinh_anh_san_phams SET 
-  //       link_hinh_anh = :new_file
-  //     WHERE id = :id";
-  //     $stmt = $this->conn->prepare($sql);
-  //     $stmt->execute([
-  //       ':link_hinh_anh' => $new_file,
-  //       ':id' => $id,
-  //     ]);
-  //     return true;
-  //   } catch (Exception $e) {
-  //     echo "Lỗi" . $e->getMessage();
-  //   }
-  // }
-  // public function destroyAnhSanPham($id)
-  // {
-  //   try {
-  //     $sql = "DELETE FROM hinh_anh_san_phams WHERE id = :id";
-  //     $stmt = $this->conn->prepare($sql);
-  //     $stmt->execute([
-  //       ':id' => $id,
-  //     ]);
 
-  //     return true;
-  //   } catch (Exception $e) {
-  //     echo "Lỗi" . $e->getMessage();
-  //   }
-  // }
-  // public function destroySanPham($id)
-  // {
-  //   try {
-  //     $sql = "DELETE FROM hinh_anh_san_phams WHERE id = :id";
-  //     $stmt = $this->conn->prepare($sql);
-  //     $stmt->execute([
-  //       ':id' => $id,
-  //     ]);
+  public function updateDonHang(
+    $id,
+    $ten_nguoi_nhan,
+    $sdt_nguoi_nhan,
+    $dia_chi_nguoi_nhan,
+    $email_nguoi_nhan,
+    $ghi_chu,
+    $trang_thai_id
+  ) {
+    try {
+      $sql = "UPDATE don_hangs SET 
+        ten_nguoi_nhan = :ten_nguoi_nhan, 
+        sdt_nguoi_nhan = :sdt_nguoi_nhan, 
+        dia_chi_nguoi_nhan = :dia_chi_nguoi_nhan,
+        email_nguoi_nhan = :email_nguoi_nhan, 
+        ghi_chu = :ghi_chu, 
+        trang_thai_id = :trang_thai_id
+      WHERE id = :id";
+      $stmt = $this->conn->prepare($sql);
 
-  //     return true;
-  //   } catch (Exception $e) {
-  //     echo "Lỗi" . $e->getMessage();
-  //   }
-  // }
+      $stmt->execute([
+        ':ten_nguoi_nhan' => $ten_nguoi_nhan,
+        ':sdt_nguoi_nhan' => $sdt_nguoi_nhan,
+        ':dia_chi_nguoi_nhan' => $dia_chi_nguoi_nhan,
+        ':email_nguoi_nhan' => $email_nguoi_nhan,
+        ':ghi_chu' => $ghi_chu,
+        ':trang_thai_id' => $trang_thai_id,
+        ':id' => $id
+      ]);
+
+      return true;
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
 }
