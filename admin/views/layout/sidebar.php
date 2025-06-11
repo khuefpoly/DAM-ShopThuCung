@@ -47,6 +47,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="<?= BASE_URL_ADMIN . '?act=don-hang' ?>" class="nav-link">
+            <i class="nav-icon fas fa-file-invoice"></i>
+            <p>
+              Đơn hàng
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
