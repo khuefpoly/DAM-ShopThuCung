@@ -15,7 +15,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản lý tài khoản quản trị viên</h1>
+          <h1>Quản lý tài khoản khách hàng</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -28,9 +28,6 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <a href="<?= BASE_URL_ADMIN . '?act=form-them-quan-tri' ?>">
-                <button class="btn btn-success">Thêm tài khoản</button>
-              </a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -39,6 +36,7 @@
                   <tr>
                     <th>#</th>
                     <th>Họ tên</th>
+                    <th>Ảnh đại diện</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
                     <th>Trạng thái</th>
@@ -46,20 +44,28 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($listQuanTri as $key => $quanTri) : ?>
+                  <?php foreach ($listKhachHang as $key => $khachHang) : ?>
                     <tr>
                       <td><?php echo $key + 1; ?></td>
-                      <td><?php echo $quanTri['ho_ten']; ?></td>
-                      <td><?php echo $quanTri['email']; ?></td>
-                      <td><?php echo $quanTri['so_dien_thoai']; ?></td>
-                      <td><?php echo $quanTri['trang_thai'] == 1 ? 'Active' : 'Inactive'; ?></td>
+                      <td><?php echo $khachHang['ho_ten']; ?></td>
+                      <td><img src="<?= BASE_URL . $khachHang['anh_dai_dien'] ?>" style="width: 100px; height: 100px;" alt="" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png?20200929003010'"></td>
+                      <td><?php echo $khachHang['email']; ?></td>
+                      <td><?php echo $khachHang['so_dien_thoai']; ?></td>
+                      <td><?php echo $khachHang['trang_thai'] == 1 ? 'Active' : 'Inactive'; ?></td>
                       <td>
-                        <a href="<?= BASE_URL_ADMIN . '?act=form-sua-quan-tri&id_quan_tri=' . $quanTri['id'] ?>">
-                          <button class="btn btn-warning">Sửa</button>
-                        </a>
-                        <a href="<?= BASE_URL_ADMIN . '?act=reset-password&id_quan_tri=' . $quanTri['id'] ?>" onclick="return confirm('Bạn có muốn reset password của tài khoản hay không?')">
-                        <button class="btn btn-danger">Reset</button>
-                        </a>
+                        <div class="btn btn-group">
+                          <a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $khachHang['id'] ?>">
+                            <button class="btn btn-primary"><i class="far fa-eye"></i></button>
+                          </a>
+                          <a href="<?= BASE_URL_ADMIN . '?act=form-sua-khach-hang&id_khach_hang=' . $khachHang['id'] ?>">
+                            <button class="btn btn-warning"><i class="fas fa-cogs"></i></button>
+                          </a>
+                          <a href="<?= BASE_URL_ADMIN . '?act=reset-password&id_quan_tri=' . $khachHang['id'] ?>" onclick="return confirm('Bạn có muốn reset password của tài khoản hay không?')">
+                            <button class="btn btn-danger">
+                              <i class="fas fa-circle-notch"></i>
+                            </button>
+                          </a>
+                        </div>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -68,6 +74,7 @@
                   <tr>
                     <th>#</th>
                     <th>Họ tên</th>
+                    <th>Ảnh đại diện</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
                     <th>Trạng thái</th>

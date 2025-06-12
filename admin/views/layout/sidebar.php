@@ -71,7 +71,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="<?= BASE_URL_ADMIN . '?act=list-tai-khoan-khach-hang' ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tài khoản khách hàng</p>
               </a>
