@@ -2,9 +2,13 @@
 class AdminTaiKhoanController
 {
   public $modelTaiKhoan;
+  public $modelDonHang;
+  public $modelSanPham;
   public function __construct()
   {
     $this->modelTaiKhoan = new AdminTaiKhoan();
+    $this->modelDonHang = new AdminDonHang();
+    $this->modelSanPham = new AdminSanPham();
   }
 
   public function danhSachQuanTri()
@@ -184,7 +188,7 @@ class AdminTaiKhoanController
       $_SESSION['error'] = $errors;
       if (empty($errors)) {
         //Nếu không có lỗi thì tiến hành thêm 
-         $this->modelTaiKhoan->updateKhachHang(
+        $this->modelTaiKhoan->updateKhachHang(
           $khach_hang_id,
           $ho_ten,
           $email,
@@ -204,5 +208,15 @@ class AdminTaiKhoanController
         header("Location: " . BASE_URL_ADMIN . '?act=form-sua-khach-hang&id_khach_hang=' . $khach_hang_id);
       }
     }
+  }
+
+  public function detailKhachHang()
+  {
+    $id_khach_hang = $_GET['id_khach_hang'];
+    $khachHang = $this->modelTaiKhoan->getDetailTaiKhoan($id_khach_hang);
+    $listDonHang = $this->modelDonHang->getDonHangFromKhachHang($id_khach_hang);
+    $listBinhLuan = $this->modelSanPham->getBinhLuanFromKhachHang($id_khach_hang);
+    require_once './views/taikhoan/khachhang/detailKhachHang.php';
+    deleteSessionError();
   }
 }

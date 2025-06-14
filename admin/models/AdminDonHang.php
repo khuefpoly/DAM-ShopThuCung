@@ -62,17 +62,6 @@ class AdminDonHang
       echo "Lỗi" . $e->getMessage();
     }
   }
-  // public function postEditSanPham($id)
-  // {
-  //   try {
-  //     $sql = "SELECT * FROM san_phams WHERE id = :id";
-  //     $stmt = $this->conn->prepare($sql);
-  //     $stmt->execute([':id' => $id]);
-  //     return $stmt->fetch();
-  //   } catch (Exception $e) {
-  //     echo "Lỗi" . $e->getMessage();
-  //   }
-  // }
 
   public function updateDonHang(
     $id,
@@ -105,6 +94,19 @@ class AdminDonHang
       ]);
 
       return true;
+    } catch (Exception $e) {
+      echo "Lỗi" . $e->getMessage();
+    }
+  }
+   public function getDonHangFromKhachHang($id)
+  {
+    try {
+      $sql = "SELECT don_hangs. *, trang_thai_don_hangs.ten_trang_thai FROM don_hangs
+      INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id
+      WHERE don_hangs.tai_khoan_id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([':id'=>$id]);
+      return $stmt->fetchAll();
     } catch (Exception $e) {
       echo "Lỗi" . $e->getMessage();
     }
