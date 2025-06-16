@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AZPET | Quản trị viên</title>
-  <link rel="icon" href="./assets/dist/img/azpet.png" type="image/x-icon">
+  <title> Quản trị viên | Mật Pet Family</title>
+  <link rel="icon" href="./assets/dist/img/matpetfamily.png" type="image/x-icon">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"

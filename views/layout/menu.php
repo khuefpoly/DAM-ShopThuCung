@@ -12,7 +12,7 @@
           <div class="col-lg-2">
             <div class="logo">
               <a href="<?= BASE_URL ?>">
-                <img src="assets/img/logo/azpet.png" alt="AZPET" style="width: 150px; height: auto;">
+                <img src="assets/img/logo/matpetfamily.png" alt="AZPET" style="width: 150px; height: auto;">
               </a>
             </div>
           </div>

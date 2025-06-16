@@ -210,13 +210,14 @@ class AdminSanPhamController
           $new_file
         );
         //Chuyển hướng về trang danh sách sản phẩm
-        header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
+        header("Location: " . BASE_URL_ADMIN . "?act=san-pham");
         exit();
       } else {
         //Trả về form và lỗi
         // Đặt chỉ thị xóa session sau khi hiển thị form
         $_SESSION['flash'] = true;
-        header("Location: ' . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham" . $san_pham_id);
+        header("Location: " . BASE_URL_ADMIN . "?act=form-sua-san-pham&id_san_pham=" . $san_pham_id);
+
         exit();
       }
     }
@@ -325,7 +326,7 @@ class AdminSanPhamController
 
     $listBinhLuan = $this->modelSanPham->getBinhLuanFromSanPham($id);
     if ($sanPham) {
-      require_once './views/sanPham/detailSanPham.php';
+      require_once './views/sanpham/detailSanPham.php';
     } else {
       header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
       exit();
