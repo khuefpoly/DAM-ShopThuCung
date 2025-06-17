@@ -13,7 +13,6 @@
             <nav aria-label="breadcrumb">
               <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="shop.html">Cửa hàng</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
               </ul>
             </nav>
@@ -119,7 +118,7 @@
                   </table>
                 </div>
               </div>
-              <a href="checkout.html" class="btn btn-sqr d-block">Tiến hành đặt hàng</a>
+              <a href="<?= BASE_URL . '?act=thanh-toan' ?>" class="btn btn-sqr d-block">Tiến hành đặt hàng</a>
             </div>
           </div>
         </div>
