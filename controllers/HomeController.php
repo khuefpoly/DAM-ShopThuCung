@@ -170,7 +170,7 @@ class HomeController
       $tai_khoan_id = $user['id'];
       //Thêm thông tin vào db
       $ma_don_hang = 'DH - ' . rand(1000, 9999);
-      $this->modelDonHang->addDonHang(
+      $donHang = $this->modelDonHang->addDonHang(
         $tai_khoan_id,
         $ten_nguoi_nhan,
         $email_nguoi_nhan,
@@ -183,8 +183,39 @@ class HomeController
         $ma_don_hang,
         $trang_thai_id
       );
-      var_dump('thêm thành công');
-      die;
+      //lấy thông tin giỏ hàng của người dùng
+      $gioHang = $this->modelGioHang->getGioHangFromUser($tai_khoan_id);
+
+      //Lưu sản phẩm vào chi tiết đơn hàng
+      if ($donHang) {
+        //Lấy ra toàn bộ sản phẩm trong giỏ hàng
+        $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+        //Thêm từng sản phẩm từ giỏ hàng vào bảng chi tiết đơn hàng
+        foreach ($chiTietGioHang as $item) {
+          $donGia = (!empty($item['gia_khuyen_mai']) && $item['gia_khuyen_mai'] != 0)
+            ? $item['gia_khuyen_mai']
+            : $item['gia_san_pham']; // Ưu tiên đơn giá sẽ lấy giá khuyến mãi
+          $this->modelDonHang->addChiTietDonHang(
+            $donHang, //ID đơn hàng vừa tạo
+            $item['san_pham_id'], //id sản phẩm
+            $donGia, //đơn giá lấy từ sản phẩm
+            $item['so_luong'], //Số lượng
+            $donGia * $item['so_luong'] //thành tiền
+          );
+        }
+        //Sau khi thêm xong thì phải tiến hành xóa sản phẩm trong giỏ hàng
+        //Xóa toàn bộ trong chi tiết giỏ hàng
+
+        $this->modelGioHang->clearDetailGioHang($gioHang['id']);
+        //Xóa thông tin giỏ hàng người dùng
+        $this->modelGioHang->clearGioHang($gioHang['id']);
+        //Chuyển hướng về trang lịch sử mua hàng
+        header("Location: " . BASE_URL . '?act=lich-su-mua-hang');
+        exit();
+      } else {
+        var_dump('Lỗi vui lòng thử lại sau');
+        die;
+      }
     }
   }
 }
