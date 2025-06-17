@@ -49,11 +49,11 @@
               </div>
               <div class="form-group">
                 <label for="gia_san_pham">Giá sản phẩm</label>
-                <input type="number" id="gia_san_pham" name="gia_san_pham" class="form-control" value="<?= $sanPham['gia_san_pham'] ?>">
+                <input type="number" id="gia_san_pham" min="0 " name="gia_san_pham" class="form-control" value="<?= $sanPham['gia_san_pham'] ?>">
               </div>
               <div class="form-group">
                 <label for="gia_khuyen_mai">Giá khuyến mãi</label>
-                <input type="number" id="gia_khuyen_mai" name="gia_khuyen_mai" class="form-control" value="<?= $sanPham['gia_khuyen_mai'] ?>">
+                <input type="number" id="gia_khuyen_mai" min="0" name="gia_khuyen_mai" class="form-control" value="<?= $sanPham['gia_khuyen_mai'] ?>">
               </div>
               <div class="form-group">
                 <label for="hinh_anh">Hình ảnh sản phẩm</label>

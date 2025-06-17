@@ -43,14 +43,14 @@
                 </div>
                 <div class="form-group col-6">
                   <label>Giá sản phẩm</label>
-                  <input type="number" class="form-control" name="gia_san_pham" placeholder="Nhập giá sản phẩm">
+                  <input type="number" class="form-control" min="0" name="gia_san_pham" placeholder="Nhập giá sản phẩm">
                   <?php if (isset($_SESSION['error']['gia_san_pham'])) { ?>
                     <span class="text-danger"><?= $_SESSION['error']['gia_san_pham'] ?></span>
                   <?php } ?>
                 </div>
                 <div class="form-group col-6">
                   <label>Giá khuyến mãi</label>
-                  <input type="number" class="form-control" name="gia_khuyen_mai" placeholder="Nhập giá khuyến mãi">
+                  <input type="number" class="form-control" min="0" name="gia_khuyen_mai" placeholder="Nhập giá khuyến mãi">
                   <?php if (isset($_SESSION['error']['gia_khuyen_mai'])) { ?>
                     <span class="text-danger"><?= $_SESSION['error']['gia_khuyen_mai'] ?></span>
                   <?php } ?>
