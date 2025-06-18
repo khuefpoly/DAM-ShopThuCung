@@ -56,68 +56,7 @@
     </div>
   </div>
   <!-- service policy area end -->
-  <!-- group product start -->
-  <section class="group-product-area section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="group-product-banner">
-            <figure class="banner-statistics">
-              <a href="#">
-                <img src="assets/img/banner/banner_doc.png" style="height: 425px;" alt="product banner">
-              </a>
-            </figure>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="categories-group-wrapper">
-            <!-- section title start -->
-            <div class="section-title-append">
-              <h4>Sản phẩm khuyến mại</h4>
-              <div class="slick-append"></div>
-            </div>
-            <!-- section title start -->
 
-            <!-- group list carousel start -->
-            <div class="group-list-item-wrapper">
-              <div class="group-list-carousel">
-                <?php foreach ($listSanPhamKhuyenMai as $key => $sanPham): ?>
-                  <!-- group list item start -->
-                  <div class="group-slide-item">
-                    <div class="group-item">
-                      <div class="group-item-thumb">
-                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
-                          <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="">
-                        </a>
-                      </div>
-                      <div class="group-item-desc">
-                        <h5 class="group-product-name"><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
-                            <?= $sanPham['ten_san_pham'] ?></a></h5>
-
-                        <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] != 0) { ?>
-                          <div class="price-box">
-                            <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
-                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
-                          </div>
-                        <?php } else { ?>
-                          <div class="price-box">
-                            <span class="price-regular"><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></span>
-                          </div>
-                        <?php } ?>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- group list item end -->
-                <?php endforeach ?>
-              </div>
-            </div>
-            <!-- group list carousel start -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- group product end -->
   <!-- product area start -->
   <section class="product-area section-padding">
     <div class="container">
@@ -201,6 +140,68 @@
       </div>
     </div>
   </section>
+  <!-- group product start -->
+  <section class="group-product-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="group-product-banner">
+            <figure class="banner-statistics">
+              <a href="#">
+                <img src="assets/img/banner/banner_doc.png" style="height: 425px;" alt="product banner">
+              </a>
+            </figure>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="categories-group-wrapper">
+            <!-- section title start -->
+            <div class="section-title-append">
+              <h4>Sản phẩm khuyến mại</h4>
+              <div class="slick-append"></div>
+            </div>
+            <!-- section title start -->
+
+            <!-- group list carousel start -->
+            <div class="group-list-item-wrapper">
+              <div class="group-list-carousel">
+                <?php foreach ($listSanPhamKhuyenMai as $key => $sanPham): ?>
+                  <!-- group list item start -->
+                  <div class="group-slide-item">
+                    <div class="group-item">
+                      <div class="group-item-thumb">
+                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
+                          <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="">
+                        </a>
+                      </div>
+                      <div class="group-item-desc">
+                        <h5 class="group-product-name"><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
+                            <?= $sanPham['ten_san_pham'] ?></a></h5>
+
+                        <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] != 0) { ?>
+                          <div class="price-box">
+                            <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
+                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                          </div>
+                        <?php } else { ?>
+                          <div class="price-box">
+                            <span class="price-regular"><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></span>
+                          </div>
+                        <?php } ?>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- group list item end -->
+                <?php endforeach ?>
+              </div>
+            </div>
+            <!-- group list carousel start -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- group product end -->
   <!-- product area end -->
   <!-- featured product area start -->
   <section class="feature-product section-padding">
