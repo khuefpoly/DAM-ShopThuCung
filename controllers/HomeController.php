@@ -20,6 +20,7 @@ class HomeController
 
   public function home()
   {
+    $listSanPhamKhuyenMai = $this->modelSanPham->getSanPhamKhuyenMai();
     $listSanPhamLimit12 = $this->modelSanPham->getSanPhamLimit12();
     $listNewSanPham = $this->modelSanPham->getNewSanPham();
     $listSanPham = $this->modelSanPham->getAllSanPham();

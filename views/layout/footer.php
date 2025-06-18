@@ -13,24 +13,21 @@
           <div class="widget-item">
             <div class="widget-title">
               <div class="widget-logo">
-                <a href="index.html">
-                  <img src="assets/img/logo/logo.png" alt="brand logo">
+                <a href="<?= BASE_URL ?>">
+                  <img src="assets/img/logo/matpetfamily.png" alt="brand logo">
                 </a>
               </div>
-            </div>
-            <div class="widget-body">
-              <p>We are a team of designers and developers that create high quality wordpress, shopify, Opencart </p>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="widget-item">
-            <h6 class="widget-title">Contact Us</h6>
+            <h6 class="widget-title">Liên lạc</h6>
             <div class="widget-body">
               <address class="contact-block">
                 <ul>
-                  <li><i class="pe-7s-home"></i> 4710-4890 Breckinridge USA</li>
-                  <li><i class="pe-7s-mail"></i> <a href="mailto:demo@plazathemes.com">demo@yourdomain.com </a></li>
+                  <li><i class="pe-7s-home"></i> Số 9 Trịnh Văn Bô</li>
+                  <li><i class="pe-7s-mail"></i> <a href="mailto:matpetfamily@gmail.com">matpetfamily@gmail.com</a></li>
                   <li><i class="pe-7s-call"></i> <a href="tel:(012)800456789987">(012) 800 456 789-987</a></li>
                 </ul>
               </address>
@@ -39,15 +36,14 @@
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="widget-item">
-            <h6 class="widget-title">Information</h6>
+            <h6 class="widget-title">Thông tin</h6>
             <div class="widget-body">
               <ul class="info-list">
-                <li><a href="#">about us</a></li>
-                <li><a href="#">Delivery Information</a></li>
-                <li><a href="#">privet policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">contact us</a></li>
-                <li><a href="#">site map</a></li>
+                <li><a href="#">Về chúng tôi</a></li>
+                <li><a href="#">Thông tin giao hàng</a></li>
+                <li><a href="#">Chính sách</a></li>
+                <li><a href="#">Điều khoản & Điều kiện</a></li>
+                <li><a href="#">Liên hệ</a></li>
               </ul>
             </div>
           </div>
@@ -67,10 +63,10 @@
       <div class="row align-items-center mt-20">
         <div class="col-md-6">
           <div class="newsletter-wrapper">
-            <h6 class="widget-title-text">Signup for newsletter</h6>
+            <h6 class="widget-title-text">Đăng ký để nhận thông tin</h6>
             <form class="newsletter-inner" id="mc-form">
-              <input type="email" class="news-field" id="mc-email" autocomplete="off" placeholder="Enter your email address">
-              <button class="news-btn" id="mc-submit">Subscribe</button>
+              <input type="email" class="news-field" id="mc-email" autocomplete="off" placeholder="Nhập địa chỉ email của bạn">
+              <button class="news-btn" id="mc-submit">Đăng ký</button>
             </form>
             <!-- mail-chimp-alerts Start -->
             <div class="mailchimp-alerts">

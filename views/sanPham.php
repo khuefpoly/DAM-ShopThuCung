@@ -70,7 +70,7 @@
             <div class="sidebar-banner">
               <div class="img-container">
                 <a href="#">
-                  <img src="assets/img/banner/sidebar-banner.jpg" alt="">
+                  <img src="assets/img/banner/banner.png"  alt="">
                 </a>
               </div>
             </div>
