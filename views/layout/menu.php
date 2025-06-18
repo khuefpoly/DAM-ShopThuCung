@@ -38,8 +38,8 @@
                         <?php endforeach; ?>
                       </ul>
                     </li>
-                    <li><a href="#">Giới thiệu</a></li>
-                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="<?= BASE_URL . '?act=gioi-thieu' ?>">Giới thiệu</a></li>
+                    <li><a href="<?= BASE_URL . '?act=lien-he' ?>">Liên hệ</a></li>
                   </ul>
                 </nav>
                 <!-- main menu navbar end -->

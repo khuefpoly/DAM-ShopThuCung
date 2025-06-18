@@ -369,4 +369,14 @@ class HomeController
       exit();
     }
   }
+  public function lienHe()
+  {
+    $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
+    require_once './views/lienHe.php';
+  }
+  public function gioiThieu()
+  {
+    $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
+    require_once './views/gioiThieu.php';
+  }
 }
