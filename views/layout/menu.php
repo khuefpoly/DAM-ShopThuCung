@@ -27,9 +27,15 @@
                   <ul>
                     <li><a href="<?= BASE_URL ?>">Trang chủ</a>
                     </li>
-                    <li><a href="#">Sản phẩm <i class="fa fa-angle-down"></i></a>
+                    <li><a href="<?= BASE_URL . '?act=san-pham' ?>">Thú cưng <i class="fa fa-angle-down"></i></a>
                       <ul class="dropdown">
-                        <li><a href="#">blog left sidebar</a></li>
+                        <?php foreach ($listDanhMuc as $danhMuc) : ?>
+                          <li>
+                            <a href="<?= BASE_URL . '?act=san-pham&danh_muc_id=' . $danhMuc['id'] ?>">
+                              <?= $danhMuc['ten_danh_muc'] ?>
+                            </a>
+                          </li>
+                        <?php endforeach; ?>
                       </ul>
                     </li>
                     <li><a href="#">Giới thiệu</a></li>
@@ -54,9 +60,6 @@
               </div>
               <div class="header-configure-area">
                 <ul class="nav justify-content-end">
-                  <label for=""><?php if (isset($_SESSION['user_client'])) {
-                                  echo $_SESSION['user_client'];
-                                } ?></label>
                   <li class="user-hover">
                     <a href="#">
                       <i class="pe-7s-user"></i>
@@ -64,9 +67,12 @@
                     <ul class="dropdown-list">
                       <?php if (!isset($_SESSION['user_client'])) { ?>
                         <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
+                        <li><a href="<?= BASE_URL . '?act=register' ?>">Đăng ký</a></li>
                       <?php  } else { ?>
-                        <li><a href="my-account.html">Tài khoản</a></li>
-                        <li><a href="<?= BASE_URL . '?act=lich-su-mua-hang' ?>">Đơn hàng</a></li>
+                        <li><a href="#"><?php echo $_SESSION['user_client']; ?></a></li>
+                        <li><a class="text-center" href="my-account.html">Tài khoản</a></li>
+                        <li><a class="text-center" href="<?= BASE_URL . '?act=lich-su-mua-hang' ?>">Đơn hàng</a></li>
+                        <li><a class="text-center" href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
                       <?php } ?>
                     </ul>
                   </li>

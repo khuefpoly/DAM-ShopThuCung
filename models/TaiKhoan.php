@@ -22,7 +22,7 @@ class TaiKhoan
             return 'Tài khoản bị cấm';
           }
         } else {
-          return 'Bạn không có quyền truy cập vào trang quản trị';
+          return 'Bạn không có quyền truy cập';
         }
       } else {
         return 'Bạn nhập sai thông tin mật khẩu hoặc tài khoản';

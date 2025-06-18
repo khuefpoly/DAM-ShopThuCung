@@ -8,6 +8,7 @@ require_once './controllers/HomeController.php';
 
 // Require toàn bộ file Models
 require_once './models/SanPham.php';
+require_once './models/DanhMuc.php';
 require_once './models/TaiKhoan.php';
 require_once './models/GioHang.php';
 require_once './models/DonHang.php';
@@ -22,6 +23,7 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     // Trang chủ
     '/'                         => (new HomeController())->home(),
+    'san-pham'         => (new HomeController())->sanPham(),
     'chi-tiet-san-pham'         => (new HomeController())->chiTietSanPham(),
     'them-gio-hang'             => (new HomeController())->addGioHang(),
     'gio-hang'                  => (new HomeController())->gioHang(),
@@ -32,5 +34,6 @@ match ($act) {
     'huy-don-hang'              => (new HomeController())->huyDonHang(),
 
     'login'                     => (new HomeController())->formLogin(),
+    'logout'                     => (new HomeController())->logout(),
     'check-login'               => (new HomeController())->postLogin(),
 };

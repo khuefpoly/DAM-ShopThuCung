@@ -3,6 +3,7 @@
 class HomeController
 {
   public $modelSanPham;
+  public $modelDanhMuc;
   public $modelTaiKhoan;
   public $modelGioHang;
   public $modelDonHang;
@@ -11,22 +12,38 @@ class HomeController
   {
     // Khởi tạo model SanPham
     $this->modelSanPham = new SanPham();
+    $this->modelDanhMuc = new DanhMuc();
     $this->modelTaiKhoan = new TaiKhoan();
     $this->modelGioHang = new GioHang();
     $this->modelDonHang = new DonHang();
   }
 
-  public function  home()
+  public function home()
   {
+    $listSanPhamLimit12 = $this->modelSanPham->getSanPhamLimit12();
+    $listNewSanPham = $this->modelSanPham->getNewSanPham();
     $listSanPham = $this->modelSanPham->getAllSanPham();
+    $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
     require_once './views/home.php';
+  }
+  public function sanPham()
+  {
+    $danhMucId = $_GET['danh_muc_id'] ?? null;
+
+    if ($danhMucId) {
+      $listSanPham = $this->modelSanPham->getSanPhamTheoDanhMuc($danhMucId);
+    } else {
+      $listSanPham = $this->modelSanPham->getAllSanPham();
+    }
+    $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
+    require_once './views/sanPham.php';
   }
   public function chiTietSanPham()
   {
     $id = $_GET['id_san_pham'];
 
     $sanPham = $this->modelSanPham->getDetailSanPham($id);
-
+    $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
     $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
 
     $listBinhLuan = $this->modelSanPham->getBinhLuanFromSanPham($id);
@@ -43,6 +60,7 @@ class HomeController
   }
   public function formLogin()
   {
+    $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
     require_once './views/auth/formLogin.php';
     deleteSessionError();
     exit();
@@ -126,7 +144,7 @@ class HomeController
       } else {
         $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
       }
-
+      $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
       require_once './views/gioHang.php';
     } else {
       header("Location:" . BASE_URL . "?act=login");
@@ -145,7 +163,7 @@ class HomeController
       } else {
         $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
       }
-
+      $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
       require_once './views/thanhToan.php';
     } else {
       header("Location:" . BASE_URL . "?act=login");
@@ -222,6 +240,7 @@ class HomeController
 
   public function lichSuMuaHang()
   {
+    $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
     if (isset($_SESSION['user_client'])) {
       //Lấy ra thông tin tài khoản đăng nhập
       $user =  $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
@@ -242,6 +261,7 @@ class HomeController
   }
   public function chiTietMuaHang()
   {
+    $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
     if (isset($_SESSION['user_client'])) {
       //Lấy ra thông tin tài khoản đăng nhập
       $user =  $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
@@ -299,6 +319,14 @@ class HomeController
     } else {
       var_dump('Bạn chưa đăng nhập');
       die;
+    }
+  }
+  public function logout()
+  {
+    if (isset($_SESSION['user_client'])) {
+      unset($_SESSION['user_client']);
+      header('Location: ' . BASE_URL . '?act=login');
+      exit();
     }
   }
 }

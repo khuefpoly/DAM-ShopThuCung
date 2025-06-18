@@ -8,12 +8,12 @@ class SanPham
     $this->conn = connectDB();
   }
   //Hàm lấy toàn bộ danh sách sản phẩm
-  public function getAllSanPham()
+  public function getSanPhamLimit12()
   {
     try {
       $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc
               FROM san_phams
-              INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id';
+              INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id ORDER BY san_phams.id DESC LIMIt 12';
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
       return $stmt->fetchAll();
@@ -21,6 +21,49 @@ class SanPham
       echo 'Lỗi' . $e->getMessage();
     }
   }
+  public function getNewSanPham()
+  {
+    try {
+      $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc
+              FROM san_phams
+              INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id ORDER BY san_phams.id DESC LIMIt 4';
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute();
+      return $stmt->fetchAll();
+    } catch (Exception $e) {
+      echo 'Lỗi' . $e->getMessage();
+    }
+  }
+  public function getAllSanPham()
+  {
+    try {
+      $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc
+              FROM san_phams
+              INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id ORDER BY san_phams.id DESC';
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute();
+      return $stmt->fetchAll();
+    } catch (Exception $e) {
+      echo 'Lỗi' . $e->getMessage();
+    }
+  }
+  public function getSanPhamTheoDanhMuc($danhMucId)
+  {
+    try {
+      $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc
+            FROM san_phams
+            INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id
+            WHERE san_phams.danh_muc_id = :danh_muc_id
+            ORDER BY san_phams.id DESC';
+      $stmt = $this->conn->prepare($sql);
+      $stmt->bindParam(':danh_muc_id', $danhMucId, PDO::PARAM_INT);
+      $stmt->execute();
+      return $stmt->fetchAll();
+    } catch (Exception $e) {
+      echo 'Lỗi: ' . $e->getMessage();
+    }
+  }
+
   public function getDetailSanPham($id)
   {
     try {

@@ -15,7 +15,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản lý tài khoản khách hàng</h1>
+          <h1>Quản lý tài khoản cá nhân</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -37,59 +37,6 @@
 
         <!-- edit form column -->
         <div class="col-md-9 personal-info">
-
-          <form action="<?= BASE_URL_ADMIN . '?act=sua-thong-tin-ca-nhan-quan-tri' ?>" method="post">
-            <hr>
-            <h3>Thông tin cá nhân</h3>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Họ tên:</label>
-              <div class="col-lg-12">
-                <input class="form-control" type="text" value="Jane" name=">
-              </div>
-            </div>
-            <div class=" form-group">
-                <label class="col-lg-3 control-label">Last name:</label>
-                <div class="col-lg-12">
-                  <input class="form-control" type="text" value="Bishop">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-3 control-label">Company:</label>
-                <div class="col-lg-12">
-                  <input class="form-control" type="text" value="">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-3 control-label">Email:</label>
-                <div class="col-lg-12">
-                  <input class="form-control" type="text" value="janesemail@gmail.com">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-3 control-label">Time Zone:</label>
-                <div class="col-lg-12">
-                  <div class="ui-select">
-                    <select id="user_time_zone" class="form-control">
-                      <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                      <option value="Alaska">(GMT-09:00) Alaska</option>
-                      <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                      <option value="Arizona">(GMT-07:00) Arizona</option>
-                      <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                      <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                      <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                      <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3 control-label"></label>
-                <div class="col-md-12">
-                  <input type="submit" class="btn btn-primary" value="Save Changes">
-                </div>
-              </div>
-          </form>
-          <hr>
           <h3>Đổi mật khẩu</h3>
           <?php if (isset($_SESSION['success'])) { ?>
             <div class="alert alert-info alert-dismissable">
@@ -113,8 +60,8 @@
               <div class="col-md-12">
                 <input class="form-control" type="password" value="" name="new_pass">
                 <?php if (isset($_SESSION['error']['new_pass'])) { ?>
-                    <span class="text-danger"><?= $_SESSION['error']['new_pass'] ?></span>
-                  <?php } ?>
+                  <span class="text-danger"><?= $_SESSION['error']['new_pass'] ?></span>
+                <?php } ?>
               </div>
             </div>
             <div class="form-group">
@@ -122,8 +69,8 @@
               <div class="col-md-12">
                 <input class="form-control" type="password" value="" name="confirm_pass">
                 <?php if (isset($_SESSION['error']['confirm_pass'])) { ?>
-                    <span class="text-danger"><?= $_SESSION['error']['confirm_pass'] ?></span>
-                  <?php } ?>
+                  <span class="text-danger"><?= $_SESSION['error']['confirm_pass'] ?></span>
+                <?php } ?>
               </div>
             </div>
             <div class="form-group">
