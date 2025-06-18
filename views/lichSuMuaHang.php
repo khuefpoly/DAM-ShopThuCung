@@ -46,13 +46,16 @@
                   <?php
                   foreach ($donHangs as $donHang) : ?>
                     <tr>
-                      <th class="text-center"><?= $donHang['ma_don_hang']?></th>
-                      <td><?= $donHang['ngay_dat']?></td>
+                      <th class="text-center"><?= $donHang['ma_don_hang'] ?></th>
+                      <td><?= $donHang['ngay_dat'] ?></td>
                       <td><?= formatPrice($donHang['tong_tien']) . 'đ'; ?></td>
-                      <td><?= $phuongThucThanhToan[$donHang['phuong_thuc_thanh_toan_id']]?></td>
-                      <td><?= $trangThaiDonHang[$donHang['trang_thai_id']]?></td>
+                      <td><?= $phuongThucThanhToan[$donHang['phuong_thuc_thanh_toan_id']] ?></td>
+                      <td><?= $trangThaiDonHang[$donHang['trang_thai_id']] ?></td>
                       <td>
-                        <?php if($donHang['trang_thai_id']==1):?>
+                        <a href="<?= BASE_URL . '?act=chi-tiet-mua-hang&id=' . $donHang['id'] ?>" class="btn btn-sqr">
+                          Chi tiết đơn hàng
+                        </a>
+                        <?php if ($donHang['trang_thai_id'] == 1): ?>
                           <a href="<?= BASE_URL . '?act=huy-don-hang&id=' . $donHang['id'] ?>" class="btn btn-sqr" onclick="return confirm('Xác nhận hủy đơn hàng?')">Hủy</a>
                         <?php endif ?>
                       </td>
