@@ -42,4 +42,19 @@ class TaiKhoan
       echo "Lỗi" . $e->getMessage();
     }
   }
+  public function createTaiKhoan($ho_ten, $email, $mat_khau)
+  {
+    try {
+      $sql = "INSERT INTO tai_khoans (ho_ten,email, mat_khau, chuc_vu_id, trang_thai) VALUES (:ho_ten,:email, :mat_khau, 2, 1)";
+      $stmt = $this->conn->prepare($sql);
+      return $stmt->execute([
+        ':ho_ten' => $ho_ten,
+        ':email' => $email,
+        ':mat_khau' => $mat_khau
+      ]);
+    } catch (Exception $e) {
+      echo "Lỗi: " . $e->getMessage();
+      return false;
+    }
+  }
 }

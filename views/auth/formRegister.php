@@ -12,7 +12,7 @@
             <nav aria-label="breadcrumb">
               <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                <li class="breadcrumb-item active" aria-current="page">Đăng nhập</li>
+                <li class="breadcrumb-item active" aria-current="page">Đăng ký</li>
               </ul>
             </nav>
           </div>
@@ -30,15 +30,18 @@
           <!-- Login Content Start -->
           <div class="col-lg-12">
             <div class="login-reg-form-wrap">
-              <h5 class="text-center">ĐĂNG NHẬP</h5>
+              <h5 class="text-center">ĐĂNG KÝ</h5>
               <?php if (isset($_SESSION['error'])) { ?>
                 <span class="text-danger text-center"><?= $_SESSION['error'] ?></span>
               <?php } else { ?>
-                <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
+                <p class="login-box-msg text-center">Vui lòng đăng ký</p>
               <?php } ?>
-              <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
+              <form action="<?= BASE_URL . '?act=check-register' ?>" method="post">
                 <div class="single-input-item">
-                  <input type="email" name="email" placeholder="Email or Username" required />
+                  <input type="text" name="ho_ten" placeholder="Nhập họ tên" required />
+                </div>
+                <div class="single-input-item">
+                  <input type="email" name="email" placeholder="Email" required />
                 </div>
                 <div class="single-input-item">
                   <input type="password" name="password" placeholder="Enter your Password" required />
@@ -49,7 +52,7 @@
                   </div>
                 </div>
                 <div class="single-input-item">
-                  <button class="btn btn-sqr">Đăng nhập</button>
+                  <button class="btn btn-sqr">Đăng ký</button>
                 </div>
               </form>
             </div>

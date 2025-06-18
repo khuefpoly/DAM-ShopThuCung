@@ -34,6 +34,8 @@ match ($act) {
     'huy-don-hang'              => (new HomeController())->huyDonHang(),
 
     'login'                     => (new HomeController())->formLogin(),
-    'logout'                     => (new HomeController())->logout(),
+    'register'                  => (new HomeController())->formRegister(),
+    'check-register'            => (new HomeController())->postRegister(),
+    'logout'                    => (new HomeController())->logout(),
     'check-login'               => (new HomeController())->postLogin(),
 };

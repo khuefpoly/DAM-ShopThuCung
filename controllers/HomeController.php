@@ -59,6 +59,46 @@ class HomeController
       exit();
     }
   }
+
+  public function formRegister()
+  {
+    $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
+    require_once './views/auth/formRegister.php';
+    deleteSessionError();
+    exit();
+  }
+
+  public function postRegister()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $ho_ten = $_POST['ho_ten'] ?? '';
+      $email = $_POST['email'] ?? '';
+      $password = $_POST['password'] ?? '';
+
+      // Kiểm tra email đã tồn tại chưa
+      $existing = $this->modelTaiKhoan->getTaiKhoanFromEmail($email);
+      if ($existing) {
+        $_SESSION['error'] = 'Email đã tồn tại!';
+        $_SESSION['flash'] = true;
+        header('Location: ' . BASE_URL . '?act=register');
+        exit();
+      }
+
+      // Mã hóa mật khẩu và thêm tài khoản mới
+      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+      $created = $this->modelTaiKhoan->createTaiKhoan($ho_ten, $email, $hashedPassword);
+      if ($created) {
+        $_SESSION['user_client'] = $email;
+        header('Location: ' . BASE_URL);
+        exit();
+      } else {
+        $_SESSION['error'] = 'Đăng ký thất bại!';
+        $_SESSION['flash'] = true;
+        header('Location: ' . BASE_URL . '?act=register');
+        exit();
+      }
+    }
+  }
   public function formLogin()
   {
     $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
@@ -66,7 +106,6 @@ class HomeController
     deleteSessionError();
     exit();
   }
-
   public function postLogin()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
