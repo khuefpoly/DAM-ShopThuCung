@@ -18,6 +18,12 @@
           <h1>Quản lý danh mục sản phẩm</h1>
         </div>
       </div>
+      <?php if (isset($_SESSION['success'])) : ?>
+        <div class="alert alert-success">
+          <?= $_SESSION['success'];
+          unset($_SESSION['success']); ?>
+        </div>
+      <?php endif; ?>
     </div><!-- /.container-fluid -->
   </section>
 

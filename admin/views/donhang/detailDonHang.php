@@ -86,9 +86,9 @@
                 Người nhận
                 <address>
                   <strong><?= $donHang['ten_nguoi_nhan'] ?></strong><br>
-                  Email: <?= $donHang['email_nguoi_nhan'] ?>
+                  Email: <?= $donHang['email_nguoi_nhan'] ?><br>
                   Số điện thoại: <?= $donHang['sdt_nguoi_nhan'] ?><br>
-                  Đia chỉ: <?= $donHang['dia_chi_nguoi_nhan'] ?><br>
+                  Địa chỉ: <?= $donHang['dia_chi_nguoi_nhan'] ?><br>
                 </address>
               </div>
               <!-- /.col -->
@@ -96,7 +96,7 @@
                 Thông tin đơn hàng
                 <address>
                   <strong><b>Mã đơn hàng: <?= $donHang['ma_don_hang'] ?></b></strong><br>
-                  <b>Tổng tiền:</b> <?= $donHang['tong_tien'] ?><br>
+                  <b>Tổng tiền:</b> <?= formatPrice($donHang['tong_tien']) . ' đ' ?><br>
                   <b> Ghi chú:</b> <?= $donHang['ghi_chu'] ?><br>
                   <b>Thanh toán:</b> <?= $donHang['ten_phuong_thuc'] ?><br>
                 </address>
@@ -124,11 +124,12 @@
                       <tr>
                         <td><?= $key + 1 ?></td>
                         <td><?= $sanPham['ten_san_pham'] ?></td>
-                        <td><?= $sanPham['don_gia'] ?></td>
+                        <td><?= formatPrice($sanPham['don_gia']) . ' đ' ?></td>
                         <td><?= $sanPham['so_luong'] ?></td>
-                        <td><?= $sanPham['thanh_tien'] ?></td>
+                        <td><?= formatPrice($sanPham['thanh_tien']) . ' đ' ?></td>
                       </tr>
                       <?php $tong_tien += ($sanPham['thanh_tien']); ?>
+
                     <?php endforeach; ?>
                   </tbody>
                 </table>
@@ -147,17 +148,13 @@
                     <tr>
                       <th style="width:50%">Thành tiền:</th>
                       <td>
-                        <?= $tong_tien ?>
+                        <?= formatPrice($tong_tien) . ' đ' ?>
                       </td>
-                    </tr>
-                    <tr>
-                      <th>Vận chuyển:</th>
-                      <td>200000</td>
                     </tr>
                     <tr>
                       <th>Tổng tiền:</th>
                       <td>
-                        <?= $tong_tien + 200000 ?>
+                        <?= formatPrice($tong_tien) . ' đ' ?>
                       </td>
                     </tr>
                   </table>

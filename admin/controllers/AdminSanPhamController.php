@@ -107,6 +107,7 @@ class AdminSanPhamController
         }
 
         //Chuyển hướng về trang danh sách sản phẩm
+        $_SESSION['success'] = "Thêm sản phẩm thành công!";
         header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
         exit();
       } else {
@@ -210,6 +211,7 @@ class AdminSanPhamController
           $new_file
         );
         //Chuyển hướng về trang danh sách sản phẩm
+        $_SESSION['success'] = "Sửa sản phẩm thành công!";
         header("Location: " . BASE_URL_ADMIN . "?act=san-pham");
         exit();
       } else {
@@ -275,6 +277,7 @@ class AdminSanPhamController
           deleteFile($anhSP['link_hinh_anh']);
         }
       }
+      $_SESSION['success'] = "Sửa ảnh thành công!";
       header('Location: ' . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $san_pham_id);
       exit();
     }
@@ -313,6 +316,7 @@ class AdminSanPhamController
         $this->modelSanPham->destroyAnhSanPham($anhSP['id']);
       }
     }
+    $_SESSION['success'] = "Xóa sản phẩm thành công!";
     header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
     exit();
   }

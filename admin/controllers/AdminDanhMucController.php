@@ -42,6 +42,7 @@ class AdminDanhMucController
         //Nếu không có lỗi thì tiến hành thêm danh mục
         $this->modelDanhMuc->insertDanhMuc($ten_danh_muc, $mo_ta);
         //Chuyển hướng về trang danh sách danh mục
+        $_SESSION['success'] = "Thêm danh mục thành công!";
         header('Location: ' . BASE_URL_ADMIN . '?act=danh-muc');
         exit();
       } else {
@@ -88,6 +89,7 @@ class AdminDanhMucController
         //Nếu không có lỗi thì tiến hành thêm danh mục
         $this->modelDanhMuc->updateDanhMuc($id, $ten_danh_muc, $mo_ta);
         //Chuyển hướng về trang danh sách danh mục
+        $_SESSION['success'] = "Sửa danh mục thành công!";
         header('Location: ' . BASE_URL_ADMIN . '?act=danh-muc');
         exit();
       } else {
@@ -107,6 +109,7 @@ class AdminDanhMucController
     if ($danhMuc) {
       $this->modelDanhMuc->destroyDanhMuc($id);
     }
+    $_SESSION['success'] = "Xóa danh mục thành công!";
     header('Location: ' . BASE_URL_ADMIN . '?act=danh-muc');
     exit();
   }

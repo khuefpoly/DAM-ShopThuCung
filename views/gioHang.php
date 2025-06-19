@@ -108,13 +108,9 @@
                         <td>Tổng tiền sản phẩm</td>
                         <td><?= formatPrice($tongGioHang) . ' đ' ?></td>
                       </tr>
-                      <tr>
-                        <td>Vận chuyển</td>
-                        <td>30.000 đ</td>
-                      </tr>
                       <tr class="total">
                         <td>Tổng thanh toán</td>
-                        <td class="total-amount"><?= formatPrice($tongGioHang + 30000) . ' đ' ?></td>
+                        <td class="total-amount"><?= formatPrice($tongGioHang) . ' đ' ?></td>
                       </tr>
                     </table>
                   </div>

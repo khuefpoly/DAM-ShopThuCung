@@ -100,13 +100,18 @@
         <div class="card card-info">
           <div class="card-header">
             <h3 class="card-title">Album ảnh sản phẩm</h3>
-
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                 <i class="fas fa-minus"></i>
               </button>
             </div>
           </div>
+          <?php if (isset($_SESSION['success'])) : ?>
+            <div class="alert alert-success">
+              <?= $_SESSION['success'];
+              unset($_SESSION['success']); ?>
+            </div>
+          <?php endif; ?>
           <div class="card-body p-0">
             <form action="<?= BASE_URL_ADMIN . '?act=sua-album-anh-san-pham' ?>" enctype="multipart/form-data" method="post">
               <div class="table-responsive">

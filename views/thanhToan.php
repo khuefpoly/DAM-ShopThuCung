@@ -127,15 +127,9 @@
                         <td><strong><?= formatPrice($tongGioHang) . ' đ'; ?></strong></td>
                       </tr>
                       <tr>
-                        <td>Shipping</td>
-                        <td class="d-flex justify-content-center">
-                          <strong>30.000 đ</strong>
-                        </td>
-                      </tr>
-                      <tr>
                         <td>Tổng đơn hàng</td>
-                        <input type="hidden" name="tong_tien" value="<?= $tongGioHang + 30000 ?>">
-                        <td class="total-amount"><strong><?= formatPrice($tongGioHang + 30000) . ' đ' ?></strong></td>
+                        <input type="hidden" name="tong_tien" value="<?= $tongGioHang ?>">
+                        <td class="total-amount"><strong><?= formatPrice($tongGioHang) . ' đ' ?></strong></td>
                       </tr>
                     </tfoot>
                   </table>
