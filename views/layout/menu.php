@@ -77,10 +77,14 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="#" class="minicart-btn">
+                    <a href="<?= BASE_URL . '?act=gio-hang' ?>">
+                      <i class="pe-7s-shopbag"></i>
+                      <!-- <div class="notification">2</div> -->
+                    </a>
+                    <!-- <a href="#" class="minicart-btn">
                       <i class="pe-7s-shopbag"></i>
                       <div class="notification">2</div>
-                    </a>
+                    </a> -->
                   </li>
                 </ul>
               </div>

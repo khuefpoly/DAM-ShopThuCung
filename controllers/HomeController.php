@@ -89,6 +89,7 @@ class HomeController
       $created = $this->modelTaiKhoan->createTaiKhoan($ho_ten, $email, $hashedPassword);
       if ($created) {
         $_SESSION['user_client'] = $email;
+        $_SESSION['success'] = "Đăng ký thành công!";
         header('Location: ' . BASE_URL);
         exit();
       } else {
@@ -118,6 +119,7 @@ class HomeController
       if ($user == $email) { // trường hợp đăng nhập thành công
         //Lưu thông tin vào  SESSION
         $_SESSION['user_client'] = $user;
+        $_SESSION['success'] = "Đăng nhập thành công!";
         header('Location: ' . BASE_URL);
         exit();
       } else {
@@ -163,6 +165,7 @@ class HomeController
         if (!$checkSanPham) {
           $this->modelGioHang->addDetailGioHang($gioHang['id'], $san_pham_id, $so_luong);
         }
+        $_SESSION['success'] = "Thêm giỏ hàng thành công!";
         header("Location:" . BASE_URL . '?act=gio-hang');
       } else {
         var_dump('Chưa đăng nhập');
@@ -354,6 +357,7 @@ class HomeController
       }
       //Hủy đơn hàng
       $this->modelDonHang->updateTrangThaiDonHang($donHangId, 11);
+      $_SESSION['success'] = "Hủy đơn hàng thành công!";
       header("Location: " . BASE_URL . '?act=lich-su-mua-hang');
       exit();
     } else {
@@ -365,6 +369,7 @@ class HomeController
   {
     if (isset($_SESSION['user_client'])) {
       unset($_SESSION['user_client']);
+      $_SESSION['success'] = "Đăng xuất thành công!";
       header('Location: ' . BASE_URL . '?act=login');
       exit();
     }

@@ -31,6 +31,7 @@
           <div class="col-lg-12">
             <div class="login-reg-form-wrap">
               <h5 class="text-center">ĐĂNG KÝ</h5>
+
               <?php if (isset($_SESSION['error'])) { ?>
                 <span class="text-danger text-center"><?= $_SESSION['error'] ?></span>
               <?php } else { ?>
@@ -48,7 +49,7 @@
                 </div>
                 <div class="single-input-item">
                   <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                    <a href="#" class="forget-pwd">Quên mật khẩu?</a>
+                    <a href="<?= BASE_URL . '?act=login' ?>" class="forget-pwd">Đăng nhập</a>
                   </div>
                 </div>
                 <div class="single-input-item">
